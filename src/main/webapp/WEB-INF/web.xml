@@ -8,8 +8,16 @@
         <servlet-name>Hello</servlet-name>
         <servlet-class>HelloServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReadAllItems</servlet-name>
+        <servlet-class>ReadAllItemsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Hello</servlet-name>
         <url-pattern>/hello/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReadAllItems</servlet-name>
+        <url-pattern>/readAllItems</url-pattern>
     </servlet-mapping>
 </web-app>
