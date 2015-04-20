@@ -10,17 +10,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
- * Created by ktao on 4/19/15.
+ * Created by ktao on 4/20/15.
  *
  * sample usage:
- * http://localhost:8080/readAllItems?user=John%20Doe
+ *
+ * http://localhost:8080/readIncompleteItems?user=John%20Doe
  */
-public class ReadAllItemsServlet extends HttpServlet {
+public class ReadIncompleteItemsServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CSVParser csvParser = new CSVParser(new FileReader(Constants.TODO_LIST_DATA_CSV), CSVFormat.DEFAULT.withHeader());
 
         String user = request.getParameter(Constants.USER);
@@ -31,10 +30,10 @@ public class ReadAllItemsServlet extends HttpServlet {
         List<CSVRecord> records = csvParser.getRecords();
 
         if(user != null){
-
             records = CSVUtils.filterOutByUser(user, records);
-
         }
+
+        records = CSVUtils.filterOnlyIncomplete(records);
 
         results.append(CSVUtils.csvRecordListToString(records));
 
