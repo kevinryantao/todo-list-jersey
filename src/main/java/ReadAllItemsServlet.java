@@ -19,9 +19,11 @@ import java.util.List;
  */
 public class ReadAllItemsServlet extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        CSVParser csvParser = new CSVParser(new FileReader(Constants.TODO_LIST_DATA_CSV), CSVFormat.DEFAULT.withHeader());
+        FileReader reader = new FileReader(Constants.TODO_LIST_DATA_CSV);
+        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
 
         String user = request.getParameter(Constants.USER);
 
@@ -44,6 +46,7 @@ public class ReadAllItemsServlet extends HttpServlet {
         response.getWriter().println("<h1>Hello Servlet</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId() + "<br>");
         response.getWriter().println(results.toString());
+        reader.close();
     }
 
 

@@ -16,6 +16,13 @@
         <servlet-name>ReadIncompleteItems</servlet-name>
         <servlet-class>ReadIncompleteItemsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Create</servlet-name>
+        <servlet-class>CreateServlet</servlet-class>
+    </servlet>
+
+
+
     <servlet-mapping>
         <servlet-name>Hello</servlet-name>
         <url-pattern>/hello/*</url-pattern>
@@ -27,5 +34,9 @@
     <servlet-mapping>
         <servlet-name>ReadIncompleteItems</servlet-name>
         <url-pattern>/readIncompleteItems</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Create</servlet-name>
+        <url-pattern>/create</url-pattern>
     </servlet-mapping>
 </web-app>
