@@ -66,7 +66,7 @@ public class CreateServlet extends HttpServlet {
 
         newLine.append(jsonObject.getString(Constants.DUE_DATE)).append(',');
 
-        newLine.append("true\n");
+        newLine.append("false\n");
 
         fileWriter.write(newLine.toString());
 
